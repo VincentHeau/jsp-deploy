@@ -1,0 +1,72 @@
+    <ul>
+        <c:forEach var="utilisateur" items="${utilisateurs}">
+            <li><c:out value="${utilisateur.prenom}" /> <c:out value="${ utilisateur.nom }" /></li>
+        </c:forEach>
+    </ul>    
+    
+    
+            <p>
+            <input type="radio" name="type" id="etudiant" />
+                  <label for="etudiant">Etudiant</label>
+            
+            <input type="radio" name="type" id="personnel" />
+                  <label for="personnel">Personnel</label>
+            
+        </p>
+    
+    
+    
+    package com.octest.servlets;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.octest.bdd.Noms;
+import com.octest.beans.Utilisateur;
+
+
+/**
+ * Servlet implementation class Test
+ */
+@WebServlet("/Test")
+public class Test extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+   
+    public Test() {
+        super();
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Noms tableNoms = new Noms();
+        request.setAttribute("utilisateurs", tableNoms.recupererUtilisateurs());
+        this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+    }
+
+    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setSurname(request.getParameter("nom"));
+        utilisateur.setFirstname(request.getParameter("prenom"));
+        
+        Noms tableNoms = new Noms();
+        tableNoms.ajouterUtilisateur(utilisateur);
+        
+        request.setAttribute("utilisateurs", tableNoms.recupererUtilisateurs());
+        
+        this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+    }
+    
+    
+
+}

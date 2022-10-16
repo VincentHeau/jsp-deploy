@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID">
+	<display-name>billeterie</display-name>
+	
+   <servlet>
+        <servlet-name>Test</servlet-name>
+        <servlet-class>com.octest.servlets.Test</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Test</servlet-name>
+        <url-pattern>/Accueil</url-pattern>
+    </servlet-mapping>
+    
+    
+   <servlet>
+   	<servlet-name>Etudiant</servlet-name>
+   	<servlet-class>com.octest.servlets.Etudiant</servlet-class>
+   </servlet>
+   	<servlet-mapping>
+		<servlet-name>Etudiant</servlet-name>
+		<url-pattern>/Etudiant</url-pattern>
+	</servlet-mapping>
+   
+   <servlet>
+   	<servlet-name>Personnel</servlet-name>
+   	<servlet-class>com.octest.servlets.Personnel</servlet-class>
+   </servlet>
+   	<servlet-mapping>
+		<servlet-name>Personnel</servlet-name>
+		<url-pattern>/Personnel</url-pattern>
+	</servlet-mapping>
+   
+   <servlet>
+   	<servlet-name>Admin</servlet-name>
+   	<servlet-class>com.octest.servlets.Admin</servlet-class>
+   </servlet>
+   	<servlet-mapping>
+		<servlet-name>Admin</servlet-name>
+		<url-pattern>/Admin</url-pattern>
+	</servlet-mapping>
+   
+   <servlet>
+   	<servlet-name>Enregistrer</servlet-name>
+   	<servlet-class>com.octest.servlets.Enregistrer</servlet-class>
+   </servlet>
+	<servlet-mapping>
+		<servlet-name>Enregistrer</servlet-name>
+		<url-pattern>/Enregistrer</url-pattern>
+	</servlet-mapping>
+	
+	<jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config>
+</web-app>
+
+
+
+ 
+
+
